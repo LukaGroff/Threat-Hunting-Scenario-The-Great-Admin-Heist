@@ -48,6 +48,7 @@ DeviceFileEvents
 | where FileName startswith "A" or FileName startswith "B" or FileName startswith "C"
 | where FileName contains ".exe"
 ```
+<img width="400" src="https://github.com/user-attachments/assets/b5424ba6-a943-4e48-8f67-3cb820fac499"/>
 
 **Answer**: BitSentinelCore.exe
 
