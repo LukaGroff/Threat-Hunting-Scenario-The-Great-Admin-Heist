@@ -40,7 +40,7 @@ Hunt through Microsoft Defender for Endpoint (MDE) telemetry, analyze signals, q
 ### 🕵️ **Flag 1: Identify the Fake Antivirus Program Name** 🔍  
 **What to Hunt**: Look for the name of the suspicious file or binary that resembles an antivirus but is responsible for the malicious activity.
 
-I looked for the answer under DeviceFileEvents with the user anthony-001. With the help of the hint of the program's name starting with either A, B or C and assuming it's an executable (exe) file i used the following KQL to find the answer
+I looked for the answer under DeviceFileEvents with the user anthony-001. With the help of the hint of the program's name starting with either A, B, or C, and assuming it's an executable (exe) fil,e I used the following KQL to find the answer
 
 ```
 DeviceFileEvents
