@@ -202,5 +202,5 @@ All infected systems must be reimaged, credentials reset, and defensive controls
 
 ### Appendix
 
-Report Compiled by: Luka Groff
+Report Compiled by: Luka Groff  
 Scenario: Acme Corp - Phantom Hackers APT Intrusion
