@@ -19,9 +19,8 @@ This investigation, conducted using MDE telemetry and KQL queries, uncovered a m
 
 ## Threat Timeline
 
-    **Timestamp(UTC)**       |   **Event Description**  
---------------------------------------------------------------------------------------------------  
-2025-05-07T02:00:36.794406Z    |   File BitSentinelCore.exe was created (Fake Antivirus)  
+    **Timestamp(UTC)**        |   **Event Description**  
+2025-05-07T02:00:36.794406Z   |   File BitSentinelCore.exe was created (Fake Antivirus)  
 2025-05-07T02:02:14.9669902Z  |   Registry key modified in HKCU\...\Run for persistence  
 2025-05-07T02:02:15.2599627Z  |   cmd.exe spawns and creates Scheduled Task UpdateHealthTelemetry  
 2025-05-07T02:06:51.3594039Z  |   File systemreport.lnk was dropped to serve as a keylogger  
