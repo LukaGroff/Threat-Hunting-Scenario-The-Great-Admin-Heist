@@ -3,8 +3,8 @@
 <img width="400" src="https://github.com/user-attachments/assets/1f05cb00-e1af-40f1-a4e1-8f24f6528a57" alt="computer login screen"/>
 
 # 🕵️ **Scenario: APT Threat Alert** 🚨  
-**Date**: 7 May 2025
-**Target User**: Bubba Rockerfeatherman III (anthony-001)
+**Date**: 7 May 2025  
+**Target User**: Bubba Rockerfeatherman III (anthony-001)  
 **Scenario**: Acme Corp - Phantom Hackers APT Intrusion
 
 ## Platforms and Languages Leveraged
