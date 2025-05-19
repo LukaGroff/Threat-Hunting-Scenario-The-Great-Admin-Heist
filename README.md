@@ -1,46 +1,56 @@
-# Threat-Hunting-Scenario-The-Great-Admin-Heist
+# 🎯 Threat-Hunting-Scenario-The-Great-Admin-Heist
 
 <img width="400" src="https://github.com/user-attachments/assets/1f05cb00-e1af-40f1-a4e1-8f24f6528a57" alt="computer login screen"/>
 
-Analyst: [REDACTED]Date: May 2025Target Device: anthony-001Platform: Microsoft Defender for Endpoint (MDE)Scenario: Operation Jackal Spear - Phantom Hackers APT Intrusion
+# 🕵️ **Scenario: APT Threat Alert** 🚨  
+**Date**: 7 May 2025
+**Target User**: Bubba Rockerfeatherman III (anthony-001)
+**Scenario**: Acme Corp - Phantom Hackers APT Intrusion
 
-Executive Summary
+## Platforms and Languages Leveraged
+- EDR Platform: Microsoft Defender for Endpoint
+- Kusto Query Language (KQL)
+
+## Executive Summary
 
 Acme Corp has experienced a targeted attack by the advanced persistent threat (APT) group known as The Phantom Hackers. Through stealthy delivery, deceptive tools, and persistent mechanisms, the attackers successfully infiltrated a privileged system used by the IT administrator Bubba Rockerfeatherman III.
 
 This investigation, conducted using MDE telemetry and KQL queries, uncovered a multi-stage attack that began with a fake antivirus binary and progressed into system modification, keylogging, and long-term persistence through scheduled tasks and registry manipulation. All malicious behaviors were traced back to the execution of a single binary: BitSentinelCore.exe.
 
-Threat Timeline
+## Threat Timeline
 
-Timestamp (UTC)
+Timestamp (UTC)               |   Event Description
+--------------------------------------------------------------------------------------------------
+2025-05-07T02:00:36.794406Z   |   File BitSentinelCore.exe was created (Fake Antivirus)
+2025-05-07T02:02:14.9669902Z  |   Registry key modified in HKCU\...\Run for persistence
+2025-05-07T02:02:15.2599627Z  |   cmd.exe spawns and creates Scheduled Task UpdateHealthTelemetry
+2025-05-07T02:06:51.3594039Z  |   File systemreport.lnk was dropped to serve as a keylogger
 
-Event Description
+---
 
-2025-05-07T04:00:36.794406Z
+## 🧠 Your mission:
+Hunt through Microsoft Defender for Endpoint (MDE) telemetry, analyze signals, query using KQL, and follow the breadcrumbs before the keys to Bubba’s empire vanish forever.
 
-Execution of BitSentinelCore.exe (Fake Antivirus) via csc.exe, parent powershell.exe
+### High-Level Related IoC Discovery Plan
+- **Check `DeviceProcessEvents`** for any new processes.
+- **Check `DeviceRegistryEvents`** for any modified keys.
+- **Check `DeviceFileEvents`** for any file changes.
 
-2025-05-07 04:00:36
+---
 
-File written: BitSentinelCore.exe dropped to C:\ProgramData\
+### 🕵️ **Flag 1: Identify the Fake Antivirus Program Name** 🔍  
 
-2025-05-07 04:01 - 04:03
+I looked for the answer under DeviceFileEvents with the user anthony-001. With the help of the hint of the program's name starting with either A, B or C and assuming it's an executable (exe) file i used the following KQL to find the answer
 
-cmd.exe spawns and creates Scheduled Task UpdateHealthTelemetry
+```
+DeviceFileEvents
+| where DeviceName == "anthony-001"
+| where ActionType == "FileCreated"
+| where FileName startswith "A" or FileName startswith "B" or FileName startswith "C"
+| where FileName contains ".exe"
+```
 
-2025-05-07 04:03:20
-
-Registry key modified in HKCU\...\Run for persistence
-
-2025-05-07 04:06:51
-
-systemreport.lnk file written to Recent Items (keylogger artifact)
-
-Flag Analysis
-
-Flag 1: Fake Antivirus Program Name
-
-Answer: BitSentinelCore.exe
+**Answer**: BitSentinelCore.exe
 
 Details: Disguised as an antivirus tool, this executable initiated the malicious chain of events.
 
