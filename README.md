@@ -51,7 +51,7 @@ DeviceFileEvents
 ```
 <img width="800" src="https://github.com/user-attachments/assets/b5424ba6-a943-4e48-8f67-3cb820fac499"/>
 
-**Answer**: BitSentinelCore.exe
+**Answer**: BitSentinelCore.exe  
 **Details**: Disguised as an antivirus tool, this executable initiated the malicious chain of events.
 
 ---
@@ -70,7 +70,7 @@ DeviceFileEvents
 
 <img width="800" src="https://github.com/user-attachments/assets/a7c6ee66-c07b-462f-a7d7-6d32d86dacdc"/>
 
-**Answer**: csc.exe
+**Answer**: csc.exe  
 **Details**: Used to compile and drop BitSentinelCore.exe into the C:\ProgramData directory.
 
 ---
@@ -91,7 +91,7 @@ DeviceProcessEvents
 
 <img width="800" src="https://github.com/user-attachments/assets/bd376a6a-7110-4d4e-af6a-ee72efceb0e2"/>
 
-**Answer**: BitSentinelCore.exe
+**Answer**: BitSentinelCore.exe  
 **Details**: Manually executed by the user (Bubba), confirming attacker deception and delivery success.
 
 ---
@@ -114,7 +114,7 @@ DeviceFileEvents
 
 <img width="800" src="https://github.com/user-attachments/assets/c0518d21-b57c-413b-8350-7caf38a25e41"/>
 
-**Answer**: systemreport.lnk
+**Answer**: systemreport.lnk  
 **Details**: A disguised .lnk file written to the user’s recent documents folder, consistent with keylogging tactics.
 
 ---
@@ -135,7 +135,7 @@ DeviceRegistryEvents
 
 <img width="800" src="https://github.com/user-attachments/assets/ba5195b3-4e7b-41b2-8f8d-fd405cbe9acb"/>
 
-**Answer**: HKEY_CURRENT_USER\S-1-5-21-2009930472-1356288797-1940124928-500\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+**Answer**: HKEY_CURRENT_USER\S-1-5-21-2009930472-1356288797-1940124928-500\SOFTWARE\Microsoft\Windows\CurrentVersion\Run  
 **Details**: Entry created here causes the malware to execute at every user login, achieving persistence.
 
 ---
@@ -154,7 +154,7 @@ DeviceProcessEvents
 
 <img width="800" src="https://github.com/user-attachments/assets/52bafa46-9ba9-4bbd-ade6-560a76799824"/>
 
-**Answer**: UpdateHealthTelemetry
+**Answer**: UpdateHealthTelemetry  
 **Details**: Task created using schtasks.exe, scheduled to execute BitSentinelCore.exe daily.
 
 ---
@@ -173,7 +173,7 @@ DeviceProcessEvents
 
 <img width="800" src="https://github.com/user-attachments/assets/cc996fed-8f98-48dc-bfca-96fd1c8d7360"/>
 
-**Answer**: BitSentinelCore.exe -> cmd.exe -> schtasks.exe
+**Answer**: BitSentinelCore.exe -> cmd.exe -> schtasks.exe  
 **Details**: Clear parent-child-grandchild relationship showing malware-initiated persistence setup.
 
 
@@ -183,7 +183,7 @@ DeviceProcessEvents
 From all the results of the previous steps, I took notes of the timeline and have already added it at the beginning of the report, right under the summary, to quickly see the summary and timeline of the events. 
 As for the question of when it all began, it can be seen below.
 
-**Answer**: 2025-05-07T04:00:36.794406Z
+**Answer**: 2025-05-07T04:00:36.794406Z  
 **Details**: The timestamp at which BitSentinelCore.exe was executed, triggering the full attack chain.
 
 
